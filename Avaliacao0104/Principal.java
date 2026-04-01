@@ -4,15 +4,26 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.*;
 
-// Verificar o ano que mais choveu e o mais quente
+/**
+ * Classe principal responsável por ler os dados climáticos
+ * de um arquivo CSV e analisar quais anos foram mais quentes
+ * e com mais chuva.
+ */
 public class Principal {
 
+    /**
+     * Método principal que executa o programa.
+     *
+     * @param args Argumentos da linha de comando.
+     */
     public static void main(String[] args) {
 
         List<Clima> lista = new ArrayList<>();
         String arquivo = "Avaliacao0104/dadosClimaticos.csv";
 
-        // Leitura do CSV
+        /**
+         * Leitura do arquivo CSV contendo os dados climáticos.
+         */
         try (BufferedReader leitor = new BufferedReader(
                 new FileReader(arquivo))) {
 
@@ -26,6 +37,9 @@ public class Principal {
 
                 String[] partes = linha.split(",");
 
+                /**
+                 * Cria objeto Clima com os dados do CSV.
+                 */
                 Clima c = new Clima(
                         partes[0],
                         partes[1],
@@ -33,20 +47,26 @@ public class Principal {
                         partes[3]
                 );
 
-                // evita duplicados
+                /**
+                 * Evita adicionar dados duplicados na lista.
+                 */
                 if (!lista.contains(c)) {
                     lista.add(c);
                 }
             }
 
-            // ===== PRINT DOS DADOS =====
+            /**
+             * Exibe todos os dados lidos.
+             */
             System.out.println("===== DADOS CLIMATICOS =====\n");
 
             for (Clima c : lista) {
                 System.out.println(c);
             }
 
-            // ===== CONTAGEM POR ANO =====
+            /**
+             * Mapas para contar ocorrência de chuva e calor por ano.
+             */
             Map<String, Integer> contagemChuva = new HashMap<>();
             Map<String, Integer> contagemQuente = new HashMap<>();
 
@@ -54,20 +74,26 @@ public class Principal {
 
                 String ano = c.getAno();
 
-                // conta meses com "muita" chuva
+                /**
+                 * Conta meses com muita chuva.
+                 */
                 if (c.getPrecipitacao().equalsIgnoreCase("muita")) {
                     int atual = contagemChuva.getOrDefault(ano, 0);
                     contagemChuva.put(ano, atual + 1);
                 }
 
-                // conta meses "quentes"
+                /**
+                 * Conta meses quentes.
+                 */
                 if (c.getTemperatura().equalsIgnoreCase("quente")) {
                     int atual = contagemQuente.getOrDefault(ano, 0);
                     contagemQuente.put(ano, atual + 1);
                 }
             }
 
-            // ===== PRINT CONTAGEM =====
+            /**
+             * Exibe contagem por ano.
+             */
             System.out.println("\n===== CONTAGEM =====\n");
 
             System.out.println("Chuva (muita) por ano:");
@@ -80,7 +106,9 @@ public class Principal {
                 System.out.println("Ano " + ano + ": " + contagemQuente.get(ano));
             }
 
-            // ===== MAIOR CHUVA =====
+            /**
+             * Descobre o(s) ano(s) com mais chuva.
+             */
             int maiorChuva = -1;
             List<String> anosMaisChuvosos = new ArrayList<>();
 
@@ -96,7 +124,9 @@ public class Principal {
                 }
             }
 
-            // ===== MAIS QUENTE =====
+            /**
+             * Descobre o(s) ano(s) mais quentes.
+             */
             int maiorQuente = -1;
             List<String> anosMaisQuentes = new ArrayList<>();
 
@@ -112,13 +142,18 @@ public class Principal {
                 }
             }
 
-            // ===== RESULTADO FINAL =====
+            /**
+             * Exibe resultado final da análise.
+             */
             System.out.println("\n===== RESULTADO FINAL =====\n");
 
             System.out.println("Ano(s) que mais choveu : " + anosMaisChuvosos + " (" + maiorChuva + ")");
             System.out.println("Ano(s) mais quente     : " + anosMaisQuentes + " (" + maiorQuente + ")");
 
         } catch (Exception e) {
+            /**
+             * Exibe erro caso o arquivo não seja lido.
+             */
             System.out.println("Erro ao ler arquivo: " + e.getMessage());
         }
     }
