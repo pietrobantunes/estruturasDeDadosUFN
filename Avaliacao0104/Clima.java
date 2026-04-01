@@ -1,7 +1,7 @@
 package Avaliacao0104;
 
 /**
- * Classe que representa os dados climáticos de um determinado mês e ano.
+ * Classe que representa os dados climáticos de um determinado mês e ano
  */
 public class Clima {
 
