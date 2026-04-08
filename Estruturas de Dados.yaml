@@ -1,0 +1,22 @@
+Estruturas de Dados
+    - Físicas: as próprias variáveis - fortemente dependentes da linguagem de programação
+    - Abstratas: os algoritmos de gestão de memória (COLEÇÕES)
+        - Lista: conjunto de dados ordenados (não obrigatoriamente)
+            - Todas as operações = inserir, remover, buscar, atualizar (Create, Retrieve, Update, Delete - CRUD)
+            - Foco no armazenamento e busca de relatórios
+
+        - Pilha: dados organizados pelo topo - LIFO: Last In, First Out
+            - Há duas operações: inserir no topo e remover do topo
+            - Foco no dado que está no topo
+
+        - Fila: dados organizados pela chegada - FIFO: First In, First Out
+            - Há dois ponteiros: início/cabeça para remover e fim/cauda para inserir
+            - Foco na prioridade de chegada, ou seja, o dado mais importante é o que está no início/cabeça 
+
+        No processo de herança:
+        LISTA -> PILHA -> FILA
+    
+Coleções de Objetos
+    Na classe, há os métodos que devem sobreescritos:
+        - toString()
+        - equals()
