@@ -1,0 +1,18 @@
+Arvore
+- ED Abstrata: com crud completo
+	- foco na busca
+	- tipos
+		- genérica: um nodo pai e N nodos filhos
+		- binária: um nodo pai e no MÁXIMO 2 nodos filhos
+			- árvore binária de pesquisa ou de busca - ORDENADAS
+	- conceitos
+		- raiz - nó ou nodo de principal de uma árvore ou de subárvores
+		- folhas - nó ou nodo sem filhos (REGIÃO DE INSERÇÃO)
+		- nível - a posição hierárquica de um nó ou nodo. Começa em 0
+		- percurso ou caminho (path)
+			- RED - pré-fixado ou pré-ordem
+			- ERD - in-fixado ou em ordem
+			- EDR - pós-fixado ou pós-ordem
+				[R] = visita raiz ou aplica uma instrução/comando
+				[E] = empilha p/ o nodo do filho da esquerda
+				[D] = empilha p/ o nodo do filho da direita
